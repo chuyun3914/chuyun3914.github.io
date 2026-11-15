@@ -1,1 +1,604 @@
-今天日期是115/11/15
+<!-- 檔名：index.html -->
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- 網站標題與描述 (SEO) -->
+  <title>YUN 居托督導</title>
+  <meta name="description" content="YUN 個人網站-居托督導，深耕苗栗北區居家托育與兒少領域，擁有教保員、兒保社工與居托中心督導完整實務資歷。">
+  <meta name="keywords" content="居家托育, 苗栗北區, 督導, YUN, 兒少領域, 社工">
+  <meta name="author" content="YUN">
+
+  <!-- Google Search Console 驗證標記（請在取得驗證碼後將下方註解取消並替換 content 內容） -->
+  <!-- <meta name="google-site-verification" content="請貼上你的Google驗證碼" /> -->
+
+  <!-- Canonical 與 Open Graph 社群分享標籤 -->
+  <link rel="canonical" href="https://你的GitHub帳號.github.io/">
+  <meta property="og:title" content="YUN 居托督導">
+  <meta property="og:description" content="YUN 個人網站-居托督導，深耕苗栗北區居家托育與兒少領域，牽手同行、守護童心。">
+  <meta property="og:image" content="https://你的GitHub帳號.github.io/hero.jpg">
+  <meta property="og:url" content="https://你的GitHub帳號.github.io/">
+  <meta property="og:type" content="profile">
+
+  <!-- Emoji 網站小圖示 (Favicon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+  <!-- Google Fonts: 圓潤可愛且具文青溫暖感的繁體中文字體 (Zen Maru Gothic & Noto Sans TC) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            warm: {
+              bg: '#FDFBF7',       /* 純色乾淨溫暖米白底色 */
+              card: '#FFFFFF',     /* 卡片白 */
+              sand: '#F5EFE6',     /* 交錯區塊暖沙色 */
+              primary: '#D97757',  /* 暖陶土橘主色 */
+              primaryHover: '#C26243',
+              secondary: '#6B8E78',/* 柔和鼠尾草綠輔色 */
+              text: '#4A3F35',     /* 溫暖深咖啡文字 */
+              muted: '#7D7065',    /* 次要文字 */
+              border: '#EADFD3'    /* 柔和邊框 */
+            }
+          },
+          fontFamily: {
+            sans: ['"Zen Maru Gothic"', '"Noto Sans TC"', 'sans-serif'],
+            serif: ['"Zen Maru Gothic"', 'serif']
+          },
+          boxShadow: {
+            'warm': '0 10px 30px -5px rgba(74, 63, 53, 0.06)',
+            'warm-lg': '0 20px 40px -10px rgba(217, 119, 87, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- JSON-LD 結構化資料 (Person) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "YUN",
+    "jobTitle": "居家托育服務中心督導",
+    "description": "苗栗北區居家托育服務中心督導，深耕兒少領域，兼具教保與兒保社工實務經歷。",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "苗栗北區",
+      "addressCountry": "TW"
+    },
+    "url": "https://你的GitHub帳號.github.io/"
+  }
+  </script>
+
+  <style>
+    /* 全站基礎設定，確保手機 375px 不會左右捲動，且文字清晰大於 16px */
+    html, body {
+      overflow-x: hidden;
+      background-color: #FDFBF7;
+      color: #4A3F35;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* 閱讀進度條樣式 */
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #D97757, #E6A15C);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* 圖片裁切防變形 */
+    .img-cover {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-warm-primary/20 selection:text-warm-text">
+
+  <!-- 互動功能 1：頂部閱讀進度條 -->
+  <div id="reading-progress" role="progressbar" aria-label="頁面閱讀進度"></div>
+
+  <!-- 導覽列 -->
+  <header class="sticky top-0 z-50 bg-warm-bg/95 backdrop-blur-md border-b border-warm-border">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <!-- 網站名稱與文字頭像 -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-10 h-10 rounded-full bg-warm-primary text-white flex items-center justify-center font-bold text-xl shadow-sm group-hover:scale-105 transition-transform">
+          Y
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-xl tracking-wide text-warm-text">YUN</span>
+          <span class="text-xs text-warm-muted">苗栗北區｜居托督導</span>
+        </div>
+      </a>
+
+      <!-- 桌面版選單 -->
+      <nav class="hidden md:flex items-center gap-8 font-medium text-warm-text">
+        <a href="#about" class="hover:text-warm-primary transition-colors py-2">關於我</a>
+        <a href="#experience" class="hover:text-warm-primary transition-colors py-2">經歷</a>
+        <a href="#credentials" class="hover:text-warm-primary transition-colors py-2">證照與獎項</a>
+        <a href="#contact" class="px-5 py-2.5 rounded-full bg-warm-primary text-white hover:bg-warm-primaryHover transition-all shadow-sm">
+          下載我的履歷
+        </a>
+      </nav>
+
+      <!-- 手機版漢堡選單按鈕 -->
+      <button id="mobile-menu-btn" type="button" class="md:hidden p-3 rounded-xl text-warm-text hover:bg-warm-sand focus:outline-none focus:ring-2 focus:ring-warm-primary" aria-label="開啟主選單" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 手機版下拉選單 -->
+    <nav id="mobile-menu" class="hidden md:hidden bg-warm-card border-b border-warm-border px-5 pt-3 pb-6 space-y-3 shadow-warm">
+      <a href="#about" class="mobile-link block py-3 px-4 rounded-xl text-base font-medium text-warm-text hover:bg-warm-sand">關於我</a>
+      <a href="#experience" class="mobile-link block py-3 px-4 rounded-xl text-base font-medium text-warm-text hover:bg-warm-sand">經歷</a>
+      <a href="#credentials" class="mobile-link block py-3 px-4 rounded-xl text-base font-medium text-warm-text hover:bg-warm-sand">證照與獎項</a>
+      <a href="#contact" class="mobile-link block py-3.5 px-4 rounded-xl text-base font-bold text-center bg-warm-primary text-white hover:bg-warm-primaryHover">
+        下載我的履歷
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 區塊：開場 (Hero) - 左文右圖搭配溫暖色塊 -->
+    <section class="relative py-16 md:py-24 overflow-hidden bg-warm-bg">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- 左側文字區 -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <!-- 關鍵字標籤 -->
+            <div class="inline-flex flex-wrap justify-center lg:justify-start gap-2">
+              <span class="px-3.5 py-1.5 rounded-full bg-warm-sand text-warm-primary font-bold text-sm border border-warm-border">
+                🏡 居托中心
+              </span>
+              <span class="px-3.5 py-1.5 rounded-full bg-warm-sand text-warm-secondary font-bold text-sm border border-warm-border">
+                🧸 兒少領域
+              </span>
+              <span class="px-3.5 py-1.5 rounded-full bg-warm-sand text-warm-text font-bold text-sm border border-warm-border">
+                🤝 專業督導
+              </span>
+            </div>
+
+            <!-- 唯一 H1 標題（放名字與主標語） -->
+            <div class="space-y-3">
+              <p class="text-lg font-bold text-warm-secondary tracking-wider">
+                苗栗北區｜居家托育服務中心 督導
+              </p>
+              <h1 class="text-4xl sm:text-5xl font-black text-warm-text leading-tight tracking-tight">
+                YUN<br>
+                <span class="text-warm-primary text-3xl sm:text-4xl block mt-2">牽手同行、守護童心</span>
+              </h1>
+            </div>
+
+            <!-- 開場簡介 -->
+            <p class="text-lg text-warm-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              深耕兒少領域，從第一線教保、兒保社工到苗栗北區居托中心督導，以專業與溫度守護每個孩子的成長。
+            </p>
+
+            <!-- 主要行動按鈕 (CTA) -->
+            <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-warm-primary text-white font-bold text-lg hover:bg-warm-primaryHover transition-all shadow-warm-lg">
+                <span>📄 下載我的履歷</span>
+              </a>
+              <a href="#experience" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-warm-card text-warm-text font-bold text-lg border-2 border-warm-border hover:border-warm-primary transition-all">
+                <span>瀏覽服務經歷</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 右側視覺大圖區 -->
+          <div class="lg:col-span-5">
+            <div class="relative mx-auto max-w-md">
+              <!-- 背景裝飾圓角框 -->
+              <div class="absolute -inset-3 rounded-[2rem] bg-warm-sand -rotate-3 border border-warm-border"></div>
+              <div class="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-warm bg-warm-card border-4 border-white">
+                <img 
+                  src="hero.jpg" 
+                  alt="溫暖陪伴與兒少托育服務意象" 
+                  class="img-cover"
+                  loading="lazy"
+                  onerror="this.onerror=null; this.src='https://picsum.photos/seed/warmchildcare/800/600';"
+                >
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊一：關於我 - 交錯暖沙底色 + 左右分欄卡片 -->
+    <section id="about" class="py-16 md:py-24 bg-warm-sand border-y border-warm-border">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        
+        <!-- 區塊標題 -->
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <span class="text-sm font-bold tracking-widest text-warm-primary uppercase">ABOUT ME</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-warm-text">關於我</h2>
+          <div class="w-12 h-1.5 bg-warm-primary mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- 左欄：文字頭像與故事插圖卡片（因為資料表設定不放個人照片，使用名字首字 Y 做文青頭像） -->
+          <div class="lg:col-span-5 bg-warm-card rounded-3xl p-8 shadow-warm border border-warm-border flex flex-col justify-between space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-warm-primary to-[#E6A15C] text-white flex items-center justify-center font-black text-4xl shadow-sm shrink-0">
+                Y
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-warm-text">YUN</h3>
+                <p class="text-warm-secondary font-medium">居家托育服務中心督導</p>
+                <p class="text-sm text-warm-muted mt-1">📍 服務於苗栗北區</p>
+              </div>
+            </div>
+
+            <!-- 搭配關於我的情境照片 -->
+            <div class="rounded-2xl overflow-hidden aspect-[4/3] border border-warm-border">
+              <img 
+                src="about.jpg" 
+                alt="社工進修與溫暖服務日常" 
+                class="img-cover"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://picsum.photos/seed/socialworknote/800/600';"
+              >
+            </div>
+
+            <!-- 做事原則引言框 -->
+            <div class="bg-warm-bg rounded-2xl p-5 border-l-4 border-warm-primary">
+              <p class="text-sm text-warm-muted font-bold mb-1">💡 我的做事原則</p>
+              <p class="text-lg font-bold text-warm-text">「反思自己，顧全大局」</p>
+            </div>
+          </div>
+
+          <!-- 右欄：故事與特質分段卡片 -->
+          <div class="lg:col-span-7 flex flex-col justify-between gap-6">
+            
+            <!-- 卡片 1：現職與進修 -->
+            <div class="bg-warm-card rounded-3xl p-7 sm:p-8 shadow-warm border border-warm-border">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="w-10 h-10 rounded-full bg-warm-sand flex items-center justify-center text-xl">📚</span>
+                <h3 class="text-xl font-bold text-warm-text">現職與持續進修</h3>
+              </div>
+              <p class="text-warm-text leading-relaxed">
+                目前擔任<strong>居家托育服務中心督導</strong>，同時於<strong>玄奘大學社會工作學系碩士在職專班</strong>進修，期望增進個人專業能力與反思，將所學與論文研究應用於實務工作中。
+              </p>
+            </div>
+
+            <!-- 卡片 2：初心與轉折 -->
+            <div class="bg-warm-card rounded-3xl p-7 sm:p-8 shadow-warm border border-warm-border">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="w-10 h-10 rounded-full bg-warm-sand flex items-center justify-center text-xl">🌱</span>
+                <h3 class="text-xl font-bold text-warm-text">從多媒體走向社工的初心</h3>
+              </div>
+              <p class="text-warm-text leading-relaxed">
+                大學原就讀多媒體應用，在參與志工服務的過程中，發現自己對陪伴孩子有著深厚的熱忱，因此毅然轉到社會工作學系修畢學業。畢業後直到現在，始終堅定地在兒少領域服務。
+              </p>
+            </div>
+
+            <!-- 卡片 3：工作以外的我 -->
+            <div class="bg-warm-card rounded-3xl p-7 sm:p-8 shadow-warm border border-warm-border">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="w-10 h-10 rounded-full bg-warm-sand flex items-center justify-center text-xl">☕</span>
+                <h3 class="text-xl font-bold text-warm-text">工作以外的我</h3>
+              </div>
+              <p class="text-warm-text leading-relaxed">
+                在日常與人相處中，我是一個<strong>脾氣溫和、善於耐心傾聽</strong>的人，期許自己能以穩定的力量，傾聽並支持每一個家庭與托育夥伴的需求。
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊二：經歷 - 故事時間軸排版 -->
+    <section id="experience" class="py-16 md:py-24 bg-warm-bg">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8">
+        
+        <!-- 區塊標題 -->
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+          <span class="text-sm font-bold tracking-widest text-warm-secondary uppercase">EXPERIENCE</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-warm-text">實務經歷</h2>
+          <p class="text-warm-muted">深耕兒少領域，累積第一線照顧、保護性社工與居家托育督導完整歷練</p>
+          <div class="w-12 h-1.5 bg-warm-secondary mx-auto rounded-full"></div>
+        </div>
+
+        <!-- 時間軸容器 -->
+        <div class="relative border-l-2 border-warm-primary/40 ml-4 sm:ml-6 space-y-10 pb-4">
+          
+          <!-- 經歷 3（最新・在職中） -->
+          <div class="relative pl-8 sm:pl-10">
+            <!-- 時間軸圓點 -->
+            <span class="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full bg-warm-primary ring-4 ring-warm-bg"></span>
+            
+            <div class="bg-warm-card rounded-3xl p-6 sm:p-8 shadow-warm border border-warm-border hover:border-warm-primary/50 transition-colors">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-warm-primary text-white text-sm font-bold">
+                  至今 5 年 10 個月｜在職中
+                </span>
+                <span class="text-sm font-medium text-warm-muted">苗栗北區</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-warm-text mb-3">
+                苗栗北區居家托育服務中心｜督導
+              </h3>
+              <p class="text-warm-text leading-relaxed">
+                負責社區業務宣導、專業課程規劃與辦理，以及托育人員媒合服務等核心業務，連結家長與優質托育資源，守護幼兒安全成長。
+              </p>
+            </div>
+          </div>
+
+          <!-- 經歷 2 -->
+          <div class="relative pl-8 sm:pl-10">
+            <span class="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full bg-warm-secondary ring-4 ring-warm-bg"></span>
+            
+            <div class="bg-warm-card rounded-3xl p-6 sm:p-8 shadow-warm border border-warm-border hover:border-warm-secondary/50 transition-colors">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-warm-sand text-warm-secondary text-sm font-bold border border-warm-border">
+                  服務年資：1 年 10 個月
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-warm-text mb-3">
+                家扶基金會｜兒保社工員
+              </h3>
+              <ul class="space-y-2 text-warm-text">
+                <li class="flex items-start gap-2">
+                  <span class="text-warm-secondary font-bold">•</span>
+                  <span><strong>工作內容：</strong>專責家庭處遇的保護性業務，陪伴並協助危機家庭穩定功能。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-warm-secondary font-bold">•</span>
+                  <span><strong>專業收穫：</strong>在第一線實務中，建立對家庭多樣性的深刻理解與尊重。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 經歷 1 -->
+          <div class="relative pl-8 sm:pl-10">
+            <span class="absolute -left-[11px] top-1.5 w-5 h-5 rounded-full bg-warm-secondary ring-4 ring-warm-bg"></span>
+            
+            <div class="bg-warm-card rounded-3xl p-6 sm:p-8 shadow-warm border border-warm-border hover:border-warm-secondary/50 transition-colors">
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-warm-sand text-warm-secondary text-sm font-bold border border-warm-border">
+                  服務年資：4 年
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-warm-text mb-3">
+                心路基金會｜教保員
+              </h3>
+              <ul class="space-y-2 text-warm-text">
+                <li class="flex items-start gap-2">
+                  <span class="text-warm-secondary font-bold">•</span>
+                  <span><strong>工作內容：</strong>投入身心障礙幼兒的日常照顧與早期療育支持。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-warm-secondary font-bold">•</span>
+                  <span><strong>專業收穫：</strong>對特殊需求家庭的處境與兒少發展歷程，有了更紮實且深入的學習。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊三：證照與獎項 - 三欄卡片格 -->
+    <section id="credentials" class="py-16 md:py-24 bg-warm-sand border-y border-warm-border">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8">
+        
+        <!-- 區塊標題 -->
+        <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <span class="text-sm font-bold tracking-widest text-warm-primary uppercase">CERTIFICATIONS & AWARDS</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-warm-text">證照與獎項</h2>
+          <div class="w-12 h-1.5 bg-warm-primary mx-auto rounded-full"></div>
+        </div>
+
+        <!-- 卡片網格：手機 1 欄，電腦 3 欄 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- 項目 3：115年苗栗縣托育專業人員獲獎 -->
+          <div class="bg-warm-card rounded-3xl p-8 shadow-warm border border-warm-border flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
+            <div class="w-16 h-16 rounded-2xl bg-warm-primary/10 text-warm-primary flex items-center justify-center text-3xl mb-5">
+              🏆
+            </div>
+            <span class="px-3 py-1 rounded-full bg-warm-primary/10 text-warm-primary text-sm font-bold mb-3">
+              115 年榮譽肯定
+            </span>
+            <h3 class="text-xl font-bold text-warm-text">
+              苗栗縣托育專業人員獲獎
+            </h3>
+          </div>
+
+          <!-- 項目 2：兒少主管課程結訓 -->
+          <div class="bg-warm-card rounded-3xl p-8 shadow-warm border border-warm-border flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
+            <div class="w-16 h-16 rounded-2xl bg-warm-secondary/10 text-warm-secondary flex items-center justify-center text-3xl mb-5">
+              🎓
+            </div>
+            <span class="px-3 py-1 rounded-full bg-warm-secondary/10 text-warm-secondary text-sm font-bold mb-3">
+              管理專業訓練
+            </span>
+            <h3 class="text-xl font-bold text-warm-text">
+              兒少主管課程結訓
+            </h3>
+          </div>
+
+          <!-- 項目 1：托育人員單一證照 -->
+          <div class="bg-warm-card rounded-3xl p-8 shadow-warm border border-warm-border flex flex-col items-center text-center hover:-translate-y-1 transition-transform">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 text-amber-700 flex items-center justify-center text-3xl mb-5">
+              📜
+            </div>
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-800 text-sm font-bold mb-3">
+              國家專業證照
+            </span>
+            <h3 class="text-xl font-bold text-warm-text">
+              托育人員單一證照
+            </h3>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊四：聯絡與行動區塊 (CTA) - 滿版溫暖色塊 -->
+    <section id="contact" class="py-16 md:py-24 bg-warm-bg">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8">
+        <div class="rounded-[2.5rem] bg-gradient-to-br from-warm-primary to-[#C86646] text-white p-8 sm:p-14 text-center shadow-warm-lg space-y-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 text-3xl mb-2">
+            💌
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight">
+            期待與您進一步交流
+          </h2>
+          <p class="text-lg sm:text-xl text-white/95 max-w-2xl mx-auto leading-relaxed">
+            感謝您撥冗瀏覽我的經歷。若您正在尋找具備兒少實務、保護性社工與居家托育督導經驗的專業夥伴，歡迎下載我的完整履歷。
+          </p>
+          
+          <div class="pt-4">
+            <!-- 履歷下載按鈕（可將 href 替換為你的 resume.pdf 或雲端履歷連結） -->
+            <a 
+              href="resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              id="download-resume-btn"
+              class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-white text-warm-primary font-black text-lg hover:bg-warm-sand transition-all shadow-md"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <span>下載我的履歷</span>
+            </a>
+            <p id="resume-notice" class="hidden mt-4 text-sm bg-white/20 rounded-xl py-2 px-4 inline-block">
+              提示：上傳網站至 GitHub 時，請記得將您的履歷 PDF 命名為 <strong>resume.pdf</strong> 並放在同一資料夾中，即可直接開啟下載！
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="bg-warm-sand border-t border-warm-border py-10 text-center text-warm-muted">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 space-y-2">
+      <p class="font-bold text-warm-text text-lg">YUN｜苗栗北區居家托育服務中心督導</p>
+      <p class="text-sm">牽手同行、守護童心</p>
+      <p class="text-xs pt-4 opacity-80">© 2026 YUN. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 互動功能 2：回到頂端按鈕 -->
+  <button 
+    id="back-to-top" 
+    type="button" 
+    aria-label="回到頁面頂端"
+    class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-warm-primary text-white shadow-warm-lg flex items-center justify-center opacity-0 pointer-events-none translate-y-4 hover:bg-warm-primaryHover transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-warm-primary"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+
+  <!-- JavaScript 互動腳本（僅實作資料表勾選的「閱讀進度條」、「回到頂端」與手機版漢堡選單） -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // 1. 閱讀進度條與回到頂端按鈕控制
+        const progressBar = document.getElementById('reading-progress');
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        const handleScroll = () => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          
+          // 更新閱讀進度條寬度
+          if (progressBar && docHeight > 0) {
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = `${scrollPercent}%`;
+          }
+
+          // 控制回到頂端按鈕顯示/隱藏
+          if (backToTopBtn) {
+            if (scrollTop > 300) {
+              backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+              backToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            } else {
+              backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+              backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+            }
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        // 點擊回到頂端
+        if (backToTopBtn) {
+          backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+
+        // 2. 手機版漢堡選單開關
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (menuBtn && mobileMenu) {
+          menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+              mobileMenu.classList.remove('hidden');
+              menuBtn.setAttribute('aria-expanded', 'true');
+            } else {
+              mobileMenu.classList.add('hidden');
+              menuBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // 點擊手機選單項目後自動收合
+          mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+              menuBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
+
+        // 3. 履歷按鈕友善提示（在預覽環境尚未上傳 resume.pdf 時給予說明，不使用 alert）
+        const resumeBtn = document.getElementById('download-resume-btn');
+        const resumeNotice = document.getElementById('resume-notice');
+        if (resumeBtn && resumeNotice) {
+          resumeBtn.addEventListener('click', (e) => {
+            // 若在預覽 iframe 環境點擊，顯示友善上傳提示
+            if (window.location.protocol === 'blob:' || window.location.hostname === '') {
+              e.preventDefault();
+              resumeNotice.classList.remove('hidden');
+            }
+          });
+        }
+      } catch (error) {
+        console.error('互動功能初始化時發生錯誤:', error);
+      }
+    });
+  </script>
+</body>
+</html>
